@@ -1,0 +1,26 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Belartale/todo.git"
+  },
+  "author": "belartale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Belartale/todo/issues"
+  },
+  "homepage": "https://github.com/Belartale/todo#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6",
+    "nodemon": "^2.0.7"
+  }
+}
