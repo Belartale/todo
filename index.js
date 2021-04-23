@@ -22,7 +22,6 @@ const start = (params) => {
       console.log(chalk.blue("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! START SERVER"));
 
       await client.connect();
-      // await client.db().createCollection("todos");
       const todos = client.db().collection("todos");
 
       // await todos.insertOne({ name: "1111111111" });
