@@ -5,9 +5,6 @@ const chalk = require("chalk");
 
 const Routers = require("chalk");
 
-// const fs = require("fs");
-// const path = require("path");
-
 const client = new MongoClient(
   "mongodb+srv://admin-app-todo1:admin-app-todo1@cluster0.7h1fx.mongodb.net/app-todo?retryWrites=true&w=majority"
 );
@@ -37,8 +34,6 @@ const start = (params) => {
           });
         });
       });
-
-      // console.log(todo);
     });
   } catch (error) {
     console.log(chalk.red(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ${error}`));
