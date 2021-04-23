@@ -1,0 +1,16 @@
+html
+  include ./head.pug
+  body
+    include ./navbar.pug
+    main
+      h1 CREATE
+      form(action="/create", method="post")
+
+        label(for="inputTitle") 
+        input(id="inputTitle", type="text", name="title")
+
+        label(for="inputText") 
+        input(id="inputText", type="text", name="text")
+
+        button(type="submit") req
+          
