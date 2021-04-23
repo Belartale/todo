@@ -32,15 +32,12 @@ html
             input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
             button.btn.btn-outline-success(type='submit') Searchq
     main
-      section.container 
-        h1= message
-        .card.text-white.bg-danger.mb-3(style='max-width: 18rem;')
-          .card-header Headersss
-          .card-body
-            h5.card-title Danger card title
-            p.card-text
-              | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
-
-        ul
+      section.container.my-5
+        ul.list-unstyled
           - for (let i = 0; i < arr.length; i++)
             li= arr[i].name
+            .card.text-white.bg-danger.mb-3(style='max-width: 18rem;')
+              .card-header Headersss
+                h5.card-title= arr[i].tittle
+              .card-body
+                p.card-text= arr[i].text
