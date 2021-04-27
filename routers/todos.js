@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
     const todos = client.db().collection("todos");
 
     const todo = await todos.find().toArray();
+
     await res.render("index", {
       arr: todo,
     });
@@ -27,13 +28,24 @@ router.post("/", async (req, res) => {
   await client.connect();
   const todos = client.db().collection("todos");
 
-  await todos.deleteOne({
-    title: req.body.title,
-    text: req.body.text,
-  });
+  // todos.findOneAndDelete(req.body.obj);
+
+  function text(text) {
+    let resultText;
+
+    if (text == "empty") {
+      return (resultText = "empty");
+    } else {
+      return text;
+    }
+  }
+
+  await todos.deleteOne({ title: req.body.title, text: text(req.body.text) });
+  console.log(req.body.idItem);
 
   await res.redirect("/");
 });
+//!
 
 router.get("/create", (req, res) => {
   res.render("create", {});
@@ -42,9 +54,23 @@ router.get("/create", (req, res) => {
 router.post("/create", async (req, res) => {
   await client.connect();
   const todos = client.db().collection("todos");
-  await todos.insertOne({ title: req.body.title, text: req.body.text });
 
-  await res.redirect("/"); // посмотреть список всех todo
+  // await todos.insertOne({ title: req.body.title, text: req.body.text });
+
+  function text(text) {
+    let resultText;
+
+    if (text == "") {
+      resultText = "empty";
+      return resultText;
+    } else {
+      return text;
+    }
+  }
+
+  await todos.insertOne({ title: req.body.title, text: text(req.body.text) });
+
+  await res.redirect("/");
 });
 
 module.exports = router;
