@@ -10,6 +10,10 @@ html
             .card.text-white.bg-danger.mb-3(style='max-width: 18rem;')
               .card-header
                 h5.card-title= arr[i].title
+                form(action="/", method="post")
+                  input(type="text", name="idItem", value=arr[i]._id, hidden)
+                  input(type="text", name="title", value=arr[i].title, hidden)
+                  input(type="text", name="text", value=arr[i].text, hidden)
+                  button(type="submit") del
               .card-body
                 p.card-text= arr[i].text
-      p asdasd

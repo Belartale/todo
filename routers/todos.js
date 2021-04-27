@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectID, ObjectId } = require("mongodb");
 const chalk = require("chalk");
 
 const client = new MongoClient(
@@ -22,6 +22,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+//! DEL
+router.post("/", async (req, res) => {
+  await client.connect();
+  const todos = client.db().collection("todos");
+
+  await todos.deleteOne({
+    title: req.body.title,
+    text: req.body.text,
+  });
+
+  await res.redirect("/");
+});
+
 router.get("/create", (req, res) => {
   res.render("create", {});
 });
@@ -29,25 +42,9 @@ router.get("/create", (req, res) => {
 router.post("/create", async (req, res) => {
   await client.connect();
   const todos = client.db().collection("todos");
-  await todos.insertOne({ title: req.body.title, text: req.body.title });
+  await todos.insertOne({ title: req.body.title, text: req.body.text });
 
-  // await todo.save(); // асинхроность и воз промис
   await res.redirect("/"); // посмотреть список всех todo
-
-  // res.render("create", {});
 });
-
-// const getAllTodos = async () => {
-//   await client.connect();
-//   const todos = client.db().collection("todos");
-
-//   const todo = await todos.find().toArray();
-//   // console.log(chalk.yellow(todo));
-//   return todo[2].title;
-// };
-
-// router.get("/", async (req, res) => {
-//   console.log(getAllTodos());
-// });
 
 module.exports = router;
