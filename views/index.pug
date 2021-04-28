@@ -4,9 +4,9 @@ html
     include ./navbar.pug
     main
       section.container.my-5
-        ul.list-unstyled
+        ul.list-unstyled.row
           - for (let i = 0; i < arr.length; i++)
-            li= arr[i].name
+            li.col= arr[i].name
             .card.mb-3(style='max-width: 18rem;')
               .card-header
                 .row.align-items-center
@@ -25,13 +25,3 @@ html
               - if (arr[i].text != "empty")
                 .card-body
                     p.card-text= arr[i].text
-              
-
-
-
-
-              //- .card-body
-              //-   - if (arr[i].text == "empty")
-              //-     p.card-text.text-danger Here is no data
-              //-   - else
-              //-     p.card-text= arr[i].text

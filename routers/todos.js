@@ -41,7 +41,6 @@ router.post("/", async (req, res) => {
   }
 
   await todos.deleteOne({ title: req.body.title, text: text(req.body.text) });
-  console.log(req.body.idItem);
 
   await res.redirect("/");
 });
