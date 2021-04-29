@@ -23,8 +23,26 @@ router.get("/", async (req, res) => {
   }
 });
 
-//! DEL
 router.post("/", async (req, res) => {
+  try {
+    await client.connect();
+    const todos = client.db().collection("todos");
+
+    await todos.updateOne(
+      { title: req.body.title, text: req.body.text },
+      { $set: { title: "NEW title", text: "NEW text" } }
+    );
+
+    const todo = await todos.find().toArray();
+
+    await res.render("index", { arr: todo });
+  } catch (error) {
+    console.log(chalk.red(error));
+  }
+});
+
+//! DEL
+router.post("/deleteTodo", async (req, res) => {
   await client.connect();
   const todos = client.db().collection("todos");
 
@@ -50,7 +68,7 @@ router.get("/create", (req, res) => {
   res.render("create", {});
 });
 
-router.post("/create", async (req, res) => {
+router.post("/createTodo", async (req, res) => {
   await client.connect();
   const todos = client.db().collection("todos");
 
