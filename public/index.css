@@ -1,3 +1,10 @@
 .body {
   background-color: red !important;
 }
+.background-linear-gradient {
+  background: linear-gradient(
+    130deg,
+    rgba(255, 204, 0, 0.7),
+    rgba(255, 93, 18, 0.6)
+  );
+}

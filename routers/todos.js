@@ -23,14 +23,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/changeTodo", async (req, res) => {
   try {
     await client.connect();
     const todos = client.db().collection("todos");
 
     await todos.updateOne(
       { title: req.body.title, text: req.body.text },
-      { $set: { title: "NEW title", text: "NEW text" } }
+      { $set: { title: req.body.changeTitle, text: req.body.changeText } }
     );
 
     const todo = await todos.find().toArray();
