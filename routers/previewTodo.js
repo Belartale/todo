@@ -12,8 +12,11 @@ router.get("/", async (req, res) => {
   try {
     await client.connect();
     const todos = client.db().collection("todos");
-
     const todo = await todos.find().toArray();
+
+    todo.forEach((element) => {
+      element.timeLeft = Date.now() - element.time;
+    });
 
     await res.render("index", {
       arr: todo,

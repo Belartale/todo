@@ -21,7 +21,6 @@ app.set("view engine", "sass");
 app.set("view engine", "pug");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(previewTodo, createTodo, changeTodo, deleteTodo);
 app.use(previewTodo);
 app.use(createTodo);
 app.use(changeTodo);

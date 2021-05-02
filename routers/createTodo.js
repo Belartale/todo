@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const { MongoClient } = require("mongodb");
 const chalk = require("chalk");
+const path = require("path");
 
 const client = new MongoClient(
   "mongodb+srv://admin-app-todo1:admin-app-todo1@cluster0.7h1fx.mongodb.net/app-todo?retryWrites=true&w=majority",
@@ -9,7 +10,6 @@ const client = new MongoClient(
 );
 
 router.get("/create", (req, res) => {
-  // console.log(Date.now());
   res.render("create", {});
 });
 
@@ -35,6 +35,7 @@ router.post("/createTodo", async (req, res) => {
       title: req.body.title,
       text: text(req.body.text),
       color: req.body.color,
+      time: Date.now(),
     });
 
     await res.redirect("/");
