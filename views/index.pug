@@ -7,7 +7,7 @@ html
         ul.list-unstyled.row
           -for (let i = 0; i < arr.length; i++)
             li(class="col-4 mb-5")= arr[i].name
-              .card.shadow(style='max-width: 18rem;')
+              .card.shadow(style=`max-width: 18rem; background: ${arr[i].color}`)
                 .card-header
                   .row.align-items-center
                     .col-6
@@ -26,15 +26,22 @@ html
                               button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                             .modal-body
 
+                              //- HIDDEN  
                               input(type="text", name="id", value=arr[i]._id, hidden)
                               input(type="text", name="title", value=arr[i].title, hidden)
                               input(type="text", name="text", value=arr[i].text, hidden)
+                              input(type="text", name="color", value=arr[i].color, hidden)
 
+                              //- CHANGE
                               label(class="form-label" for="changeTitle") changeTitle
                               input(class="form-control" id="changeTitle" type="text", name="changeTitle", value=arr[i].title).d-block.mb-4
                               
                               label(class="form-label" for="changeText") changeText
-                              input(class="form-control" id="changeText" type="text", name="changeText", value=arr[i].text).d-block
+                              input(class="form-control" id="changeText" type="text", name="changeText", value=arr[i].text).d-block.mb-4
+                            
+                              label(class="form-label" for="changeColor") changeColor
+                              input.form-control.form-control-color(type='color' name="changeColor" value=`${arr[i].color}` id="changeColor")
+                            
                             .modal-footer
                               button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
                               button.btn.btn-success(type='submit') Save changes

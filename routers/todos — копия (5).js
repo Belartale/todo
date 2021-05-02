@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient, ObjectID, ObjectId } = require("mongodb");
+const { MongoClient } = require("mongodb");
 const chalk = require("chalk");
 
 const client = new MongoClient(
@@ -23,10 +23,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-//? CREATE
+//? CREATE PAGE
 router.get("/create", (req, res) => {
   res.render("create", {});
 });
+
+//? CREATE TODO
 
 router.post("/createTodo", async (req, res) => {
   await client.connect();
@@ -45,7 +47,11 @@ router.post("/createTodo", async (req, res) => {
     }
   }
 
-  await todos.insertOne({ title: req.body.title, text: text(req.body.text) });
+  await todos.insertOne({
+    title: req.body.title,
+    text: text(req.body.text),
+    color: req.body.color,
+  });
 
   await res.redirect("/");
 });
@@ -58,8 +64,14 @@ router.post("/changeTodo", async (req, res) => {
     const todos = client.db().collection("todos");
 
     await todos.updateOne(
-      { title: req.body.title, text: req.body.text },
-      { $set: { title: req.body.changeTitle, text: req.body.changeText } }
+      { title: req.body.title, text: req.body.text, color: req.body.color },
+      {
+        $set: {
+          title: req.body.changeTitle,
+          text: req.body.changeText,
+          color: req.body.changeColor,
+        },
+      }
     );
 
     const todo = await todos.find().toArray();

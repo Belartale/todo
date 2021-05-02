@@ -8,3 +8,20 @@
 .mt-100 {
   margin: 1000px;
 }
+
+.form-check-input_none:checked {
+  background: var(--bs-secondary);
+  border-color: var(--bs-secondary);
+}
+.form-check-input_success:checked {
+  background: var(--bs-success);
+  border-color: var(--bs-success);
+}
+.form-check-input_warning:checked {
+  background: var(--bs-warning);
+  border-color: var(--bs-warning);
+}
+.form-check-input_danger:checked {
+  background: var(--bs-danger);
+  border-color: var(--bs-danger);
+}
