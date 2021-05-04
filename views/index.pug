@@ -7,13 +7,13 @@ html
         ul.list-unstyled.row
           -for (let i = 0; i < arr.length; i++)
             li(class="col-4 mb-5")= arr[i].name
-              .card.shadow(style=`max-width: 18rem; background: ${arr[i].color}`)
+              .card.shadow(style=`max-width: 20rem; background: ${arr[i].color}`)
                 .card-header
                   .row.align-items-center
                     .col-6
                       h5.card-title= arr[i].title
 
-                      span #{arr[i].timeLeft}
+                      //- span time #{arr[i].time}
 
                     .col-6.d-flex.justify-content-end
                     
@@ -41,7 +41,7 @@ html
                               
                               label(class="form-label" for="changeText") changeText
                               input(class="form-control" id="changeText" type="text", name="changeText", value=arr[i].text).d-block.mb-4
-                            
+                              
                               label(class="form-label" for="changeColor") changeColor
                               input.form-control.form-control-color(type='color' name="changeColor" value=`${arr[i].color}` id="changeColor")
                             
@@ -58,9 +58,12 @@ html
                             path(d='M5.5 9a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z')
                             path(d='M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z')
 
-
-                - if (arr[i].text != "empty")
+                - if (arr[i].text !== "" || arr[i].timeTo)
                   .card-body
+                    - if (arr[i].text !== "")
                       p.card-text= arr[i].text
-              
+                    - if (arr[i].timeTo !== "")
+                      p.card-text.text-muted.text-end= arr[i].timeTo
+
+
   include ./endBody.pug

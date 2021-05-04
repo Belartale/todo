@@ -20,22 +20,14 @@ router.post("/createTodo", async (req, res) => {
 
     // await todos.insertOne({ title: req.body.title, text: req.body.text });
 
-    function text(text) {
-      let resultText;
-
-      if (text == "") {
-        resultText = "empty";
-        return resultText;
-      } else {
-        return text;
-      }
-    }
+    let data = Date.parse(req.body.timeTo);
 
     await todos.insertOne({
       title: req.body.title,
-      text: text(req.body.text),
+      text: req.body.text,
       color: req.body.color,
-      time: Date.now(),
+      timeFrom: Date.now(),
+      timeTo: data,
     });
 
     await res.redirect("/");
