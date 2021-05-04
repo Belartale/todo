@@ -15,7 +15,13 @@ router.get("/", async (req, res) => {
     const todo = await todos.find().toArray();
 
     todo.forEach((element) => {
-      element.timeLeft = Date.now() - element.time;
+      // element.timeLeft = Date.parse(element.timeTo) - Date.now();
+      let timeTo = Date.parse(element.timeTo);
+      element.timeDays = Math.floor(
+        (timeTo - Date.now()) / 1000 / 60 / 60 / 24
+      );
+      element.timeHours = Math.floor((timeTo - Date.now()) / 1000 / 60 / 60);
+      element.timeMinutes = Math.floor((timeTo - Date.now()) / 1000 / 60);
     });
 
     await res.render("index", {

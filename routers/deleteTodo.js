@@ -15,17 +15,13 @@ router.post("/deleteTodo", async (req, res) => {
 
     // todos.findOneAndDelete(req.body.obj);
 
-    function text(text) {
-      let resultText;
-
-      if (text == "empty") {
-        return (resultText = "empty");
-      } else {
-        return text;
-      }
-    }
-
-    await todos.deleteOne({ title: req.body.title, text: text(req.body.text) });
+    await todos.deleteOne({
+      title: req.body.title,
+      text: req.body.text,
+      color: req.body.color,
+      timeFrom: req.body.timeFrom,
+      timeTo: req.body.timeTo,
+    });
 
     await res.redirect("/");
   } catch (error) {

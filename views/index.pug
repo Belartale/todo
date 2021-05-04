@@ -34,6 +34,8 @@ html
                               input(type="text", name="title", value=arr[i].title, hidden)
                               input(type="text", name="text", value=arr[i].text, hidden)
                               input(type="text", name="color", value=arr[i].color, hidden)
+                              input(type="text", name="timeFrom", value=arr[i].timeFrom, hidden)
+                              input(type="text", name="timeTo", value=arr[i].timeTo, hidden)
 
                               //- CHANGE
                               label(class="form-label" for="changeTitle") changeTitle
@@ -53,6 +55,8 @@ html
                         input(type="text", name="id", value=arr[i]._id, hidden).position-absolute
                         input(type="text", name="title", value=arr[i].title, hidden).position-absolute
                         input(type="text", name="text", value=arr[i].text, hidden).position-absolute
+                        input(type="text", name="timeFrom", value=arr[i].timeFrom, hidden).position-absolute
+                        input(type="text", name="timeTo", value=arr[i].timeTo, hidden).position-absolute
                         button(class="btn btn-outline-danger" type="submit")
                           svg.bi.bi-file-earmark-minus(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
                             path(d='M5.5 9a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z')
@@ -63,7 +67,14 @@ html
                     - if (arr[i].text !== "")
                       p.card-text= arr[i].text
                     - if (arr[i].timeTo !== "")
-                      p.card-text.text-muted.text-end= arr[i].timeTo
 
-
+                      - if (arr[i].timeDays > 0)
+                        p.card-text.text-muted.text-end= arr[i].timeDays
+                          |  Days
+                      - if (arr[i].timeHours > 0 && arr[i].timeHours < 23)
+                        p.card-text.text-muted.text-end= arr[i].timeHours
+                          |  Hours
+                      - if (arr[i].timeMinutes > 0 && arr[i].timeMinutes < 60)
+                        p.card-text.text-muted.text-end= arr[i].timeMinutes
+                          |  Minutes
   include ./endBody.pug
