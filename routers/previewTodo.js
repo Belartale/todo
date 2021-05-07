@@ -8,7 +8,7 @@ const client = new MongoClient(
   { useUnifiedTopology: true }
 );
 
-router.get("/", async (req, res) => {
+router.get("/preview", async (req, res) => {
   try {
     await client.connect();
     const todos = client.db().collection("todos");
@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
       element.timeMinutes = Math.floor((timeTo - Date.now()) / 1000 / 60);
     });
 
-    await res.render("index", {
+    await res.render("preview", {
       arr: todo,
     });
   } catch (error) {

@@ -2,11 +2,11 @@ html
   include ./head.pug
   body.background-linear-gradient
     include ./navbar.pug
-    main
-      section.container.my-5
+    main.container.my-5
+      section
         ul.list-unstyled.row
           -for (let i = 0; i < arr.length; i++)
-            li(class="col-4 mb-5")= arr[i].name
+            li(class="col-4 mb-5" data-aos="fade-up")= arr[i].name
               .card.shadow(style=`max-width: 20rem; background: ${arr[i].color}`)
                 .card-header
                   .row.align-items-center
@@ -77,4 +77,4 @@ html
                       - if (arr[i].timeMinutes > 0 && arr[i].timeMinutes < 60)
                         p.card-text.text-muted.text-end= arr[i].timeMinutes
                           |  Minutes
-  include ./endBody.pug
+    include ./endBody.pug
