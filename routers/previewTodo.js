@@ -20,7 +20,10 @@ router.get("/previewTodos", async (req, res) => {
     const todos = client.db().collection("todos");
     const manyTodo = await todos.find().toArray();
 
-    manyTodo.todoCards.forEach((element) => {
+    console.log(manyTodo[0].todoCards);
+    console.log(chalk.red("previewTodo 23 row"));
+
+    manyTodo.forEach((element) => {
       // element.timeLeft = Date.parse(element.timeTo) - Date.now();
       let timeTo = Date.parse(element.timeToTodo);
       element.timeDays = Math.floor(
