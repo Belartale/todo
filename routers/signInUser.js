@@ -21,7 +21,7 @@ router.post("/signInUser", async (req, res) => {
     req.body.userPassword == todo.userPassword
   ) {
     await res.cookie("_id", todo._id, {});
-    await res.render("create", {});
+    await res.render("createTodo", {});
   } else {
     await res.send("<h1>error</h1>");
   }

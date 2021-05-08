@@ -11,17 +11,17 @@ html
 
             .card-header 
               label(for="inputTitle").card-title.d-flex.justify-content-center.fs-3 Title:
-              input(class="form-control", id="inputTitle", type="text", name="title", placeholder="Your title of todo ..." required).card-text
+              input(class="form-control", id="inputTitle", type="text", name="titleTodo", placeholder="Your title of todo ..." required).card-text
               
             .card-body
               label(for="inputText").card-title.d-flex.justify-content-center.fs-5 Text:
-              textarea(class="form-control" id="inputText" type="text" name="text" placeholder="Your text of todo ...")
+              textarea(class="form-control" id="inputText" type="text" name="textTodo" placeholder="Your text of todo ...")
 
             .card-body
               
               div.d-flex.justify-content-between.mb-4
-                input.form-control.form-control-color.me-5(type='color' name="color" value='#ffffff' title='Choose your color of todo')
-                input(type="datetime-local" name="timeTo" placeholder="Your time of todo" title="Your time to complete todo").form-control 
+                input.form-control.form-control-color.me-5(type='color' name="colorTodo" value='#ffffff' title='Choose your color of todo')
+                input(type="datetime-local" name="timeToTodo" placeholder="Your time of todo" title="Your time to complete todo").form-control 
 
               .d-flex.justify-content-end 
                 button(class="btn btn-outline-primary" type="submit") Create todo

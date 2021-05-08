@@ -18,16 +18,19 @@ function getIdCookie() {
   return getCookie("_id").slice(3, getCookie("_id").length - 1);
 }
 
-console.log(getIdCookie());
+console.log(`COOOOOO: ${getIdCookie()}`);
 
-// fetch("http://localhost:3000/signInUser", {
-//   method: "PUT",
-//   body: JSON.stringify({ val: "test" }),
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-// })
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log("POST = yes", data);
-//   });
+// let buttonDeleteCookies = document.querySelector(`.buttonDeleteCookies`);
+// buttonDeleteCookies.addEventListener("click", () => {}, false);
+
+function deleteAllCookies() {
+  var cookies = document.cookie.split(";");
+
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var eqPos = cookie.indexOf("=");
+    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
+}
+// deleteAllCookies();

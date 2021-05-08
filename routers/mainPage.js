@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const chalk = require("chalk");
 const path = require("path");
 
@@ -9,34 +9,36 @@ const client = new MongoClient(
   { useUnifiedTopology: true }
 );
 
-async function changeIdUser(params) {
+async function getIdUser(params) {
   await client.connect();
   const todos = client.db().collection("todos");
-  const todo = await todos.findOne({
-    _id: params,
-  });
-  if (todo) {
-    return true;
+  const todo = await todos.findOne({ _id: ObjectId(params) });
+
+  if (typeof todo == "object" && todo != null) {
+    console.log(chalk.green("todo._id"));
+    return todo._id;
+  } else {
+    console.log(chalk.red("todo._id  NULLLLLLLLLLL"));
   }
 }
 
 router.get("/", async (req, res) => {
-  if (changeIdUser(req.cookies._id)) {
-    res.render("create", {});
+  if (
+    (await getIdUser(req.cookies._id).then((e) => e)) == req.cookies._id &&
+    req.cookies._id != null
+  ) {
+    console.log(chalk.green("to createTodo"));
+    res.render("createTodo", {});
+  } else {
+    console.log(chalk.red("req.cookies NULLLLLLLLLL"));
   }
-  // await client.connect();
-  // const todos = client.db().collection("todos");
-  // const todo = await todos.findOne({ userName: req.body.userName });
 
-  // if (req.body.userName == todo.userName) {
-  //   console.log("OPEN");
-  // }
-
-  // res.clearCookie("some1", "donKnow1");
-  // if (req.body.userName == a) {
-  // }
-  // res.cookie("user", { userName: "arr" });
   res.render("mainPage", {});
 });
 
-module.exports = router;
+// module.exports = router;
+
+module.exports = {
+  router: router,
+  getIdUser: getIdUser,
+};

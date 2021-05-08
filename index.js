@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "node_modules")));
 
 app.use(cookieParser());
 
-app.use(mainPage);
+app.use(mainPage.router);
 
 app.use(signInUser);
 app.use(signUpUser);

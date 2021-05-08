@@ -23,7 +23,7 @@ router.post("/deleteTodo", async (req, res) => {
       timeTo: req.body.timeTo,
     });
 
-    await res.redirect("/");
+    await res.redirect("/previewTodos");
   } catch (error) {
     console.log(chalk.red(error));
   }

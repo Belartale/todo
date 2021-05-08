@@ -26,7 +26,7 @@ router.post("/changeTodo", async (req, res) => {
 
     const todo = await todos.find().toArray();
 
-    await res.render("index", { arr: todo });
+    await res.render("previewTodos", { arr: todo });
   } catch (error) {
     console.log(chalk.red(error));
   }

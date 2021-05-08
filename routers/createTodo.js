@@ -1,39 +1,62 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const chalk = require("chalk");
 const path = require("path");
+
+const mainPage = require("./mainPage");
 
 const client = new MongoClient(
   "mongodb+srv://admin-app-todo1:admin-app-todo1@cluster0.7h1fx.mongodb.net/app-todo?retryWrites=true&w=majority",
   { useUnifiedTopology: true }
 );
 
-router.get("/create", (req, res) => {
-  res.render("create", {});
+router.get("/createTodo", async (req, res) => {
+  if (
+    (await mainPage.getIdUser(req.cookies._id).then((e) => e)) ==
+      req.cookies._id &&
+    req.cookies._id != null
+  ) {
+    res.render("createTodo", {});
+  } else {
+    res.send("<h1>you didn't login</h1>");
+  }
 });
 
 router.post("/createTodo", async (req, res) => {
-  try {
-    await client.connect();
-    const todos = client.db().collection("todos");
+  await client.connect();
+  const todos = client.db().collection("todos");
 
-    // await todos.insertOne({ title: req.body.title, text: req.body.text });
+  let todo = await todos.findOne({ _id: ObjectId(req.cookies._id) });
 
-    // let data = Date.parse(req.body.timeTo);
+  let arr = [...todo.todoCards];
 
-    await todos.insertOne({
-      title: req.body.title,
-      text: req.body.text,
-      color: req.body.color,
-      timeFrom: Date.now(),
-      timeTo: req.body.timeTo,
-    });
+  arr.push({
+    titleTodo: req.body.titleTodo,
+    textTodo: req.body.textTodo,
+    colorTodo: req.body.colorTodo,
+    timeFromTodo: Date.now(),
+    timeToTodo: req.body.timeToTodo,
+  });
 
-    await res.redirect("/");
-  } catch (error) {
-    console.log(chalk.red(error));
-  }
+  let t = await todos.updateOne(
+    { _id: ObjectId(req.cookies._id) },
+    {
+      $set: {
+        todoCards: arr,
+      },
+    }
+  );
+
+  // await todos.todoCards.insertOne({
+  //   titleTodo: req.body.titleTodo,
+  //   textTodo: req.body.textTodo,
+  //   colorTodo: req.body.colorTodo,
+  //   timeFromTodo: Date.now(),
+  //   timeToTodo: req.body.timeToTodo,
+  // });
+
+  await res.redirect("/previewTodos");
 });
 
 module.exports = router;
