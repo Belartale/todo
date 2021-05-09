@@ -5,76 +5,72 @@ html
     main.container.my-5
       section
         ul.list-unstyled.row
-          -for (let i = 0; i < todos.length; i++)
-            li(class="col-4 mb-5" data-aos="fade-up")= todos[i].name
-              .card.shadow(style=`max-width: 20rem; background: ${todos[i].color}`)
+          each todo, index in todos
+            li(class="col-4 mb-5" data-aos="fade-up")
+              .card.shadow(style=`max-width: 20rem; background: ${todo.colorTodo}`)
                 .card-header
                   .row.align-items-center
                     .col-6
-                      h5.card-title= todos[i].title
+                      h5.card-title= todo.titleTodo
 
-                      //- span time #{todos[i].time}
-
+                      //- span time #{todo.time}
                     .col-6.d-flex.justify-content-end
                     
-                      button.btn.btn-outline-success.me-3(type='button' data-bs-toggle='modal' data-bs-target=`#modal${todos[i]._id}`)
+                      button.btn.btn-outline-success.me-3(type='button' data-bs-toggle='modal' data-bs-target=`#modal${todo.id}`)
                         svg.bi.bi-elementow-clockwise(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
                           path(fill-rule='evenodd' d='M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z')
                           path(d='M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z')
-                      .modal.fade(id=`modal${todos[i]._id}` tabindex='-1' aria-labelledby=`modalLabel${todos[i]._id}` aria-hidden='true')
+                      .modal.fade(id=`modal${todo.id}` tabindex='-1' aria-labelledby=`modalLabel${todo.id}` aria-hidden='true')
                         .modal-dialog
                           form(action="/changeTodo", method="post").modal-content
                             .modal-header
-                              h5(id=`modalLabel${todos[i]._id}`).modal-title.text-success Window changes
+                              h5(id=`modalLabel${todo.id}`).modal-title.text-success Window changes
                               button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                             .modal-body
 
                               //- HIDDEN  
-                              input(type="text", name="id", value=todos[i]._id, hidden)
-                              input(type="text", name="title", value=todos[i].title, hidden)
-                              input(type="text", name="text", value=todos[i].text, hidden)
-                              input(type="text", name="color", value=todos[i].color, hidden)
-                              input(type="text", name="timeFrom", value=todos[i].timeFrom, hidden)
-                              input(type="text", name="timeTo", value=todos[i].timeTo, hidden)
+                              input(type="text", name="id", value=todo.id, hidden)
+                              input(type="text", name="title", value=todo.titleTodo, hidden)
+                              input(type="text", name="text", value=todo.textTodo, hidden)
+                              input(type="text", name="color", value=todo.colorTodo, hidden)
+                              input(type="text", name="timeFrom", value=todo.timeFromTodo, hidden)
+                              input(type="text", name="timeTo", value=todo.timeToTodo, hidden)
 
                               //- CHANGE
                               label(class="form-label" for="changeTitle") changeTitle
-                              input(class="form-control" id="changeTitle" type="text", name="changeTitle", value=todos[i].title).d-block.mb-4
+                              input(class="form-control" id="changeTitle" type="text", name="changeTitle", value=todo.titleTodo).d-block.mb-4
                               
                               label(class="form-label" for="changeText") changeText
-                              input(class="form-control" id="changeText" type="text", name="changeText", value=todos[i].text).d-block.mb-4
+                              input(class="form-control" id="changeText" type="text", name="changeText", value=todo.textTodo).d-block.mb-4
                               
                               label(class="form-label" for="changeColor") changeColor
-                              input.form-control.form-control-color(type='color' name="changeColor" value=`${todos[i].color}` id="changeColor")
+                              input.form-control.form-control-color(type='color' name="changeColor" value=`${todo.colorTodo}` id="changeColor")
                             
                             .modal-footer
                               button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
                               button.btn.btn-success(type='submit') Save changes
 
                       form(action="/deleteTodo", method="post" style="margin-bottom: 0px;" )
-                        input(type="text", name="id", value=todos[i]._id, hidden).position-absolute
-                        input(type="text", name="title", value=todos[i].title, hidden).position-absolute
-                        input(type="text", name="text", value=todos[i].text, hidden).position-absolute
-                        input(type="text", name="timeFrom", value=todos[i].timeFrom, hidden).position-absolute
-                        input(type="text", name="timeTo", value=todos[i].timeTo, hidden).position-absolute
+                        input(type="text", name="idTodo", value=todo.idTodo, hidden).position-absolute
                         button(class="btn btn-outline-danger" type="submit")
+                          p= todo.idTodo
                           svg.bi.bi-file-earmark-minus(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
                             path(d='M5.5 9a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z')
                             path(d='M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z')
 
-                - if (todos[i].text !== "" || todos[i].timeTo)
+                - if (todo.textTodo !== "" || todo.timeToTodo)
                   .card-body
-                    - if (todos[i].text !== "")
-                      p.card-text= todos[i].text
-                    - if (todos[i].timeTo !== "")
+                    - if (todo.textTodo !== "")
+                      p.card-text= todo.textTodo
+                    - if (todo.timeToTodo !== "")
 
-                      - if (todos[i].timeDays > 0)
-                        p.card-text.text-muted.text-end= todos[i].timeDays
+                      - if (todo.timeDaysTodo > 0)
+                        p.card-text.text-muted.text-end= todo.timeDaysTodo
                           |  Days
-                      - if (todos[i].timeHours > 0 && todos[i].timeHours < 23)
-                        p.card-text.text-muted.text-end= todos[i].timeHours
+                      - if (todo.timeHours > 0 && todo.timeHours < 23)
+                        p.card-text.text-muted.text-end= todo.timeHours
                           |  Hours
-                      - if (todos[i].timeMinutes > 0 && todos[i].timeMinutes < 60)
-                        p.card-text.text-muted.text-end= todos[i].timeMinutes
+                      - if (todo.timeMinutes > 0 && todo.timeMinutes < 60)
+                        p.card-text.text-muted.text-end= todo.timeMinutes
                           |  Minutes
     include ./endBody.pug

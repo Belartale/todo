@@ -46,9 +46,8 @@ app.use(deleteTodo);
 const start = (params) => {
   try {
     app.listen(PORT, () => {
-      console.log(chalk.blue("START SERVER"));
+      // console.log(chalk.blue("START SERVER"));
       //!
-
       //!
     });
   } catch (error) {

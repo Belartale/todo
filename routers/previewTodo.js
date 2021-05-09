@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const chalk = require("chalk");
 
 const mainPage = require("./mainPage");
@@ -18,15 +18,11 @@ router.get("/previewTodos", async (req, res) => {
   ) {
     await client.connect();
     const todos = client.db().collection("todos");
-    const manyTodo = await todos.find().toArray();
+    const user = await todos.findOne({ _id: ObjectId(req.cookies._id) });
 
-    console.log(manyTodo[0].todoCards);
-    console.log(chalk.red("previewTodo 23 row"));
-
-    manyTodo.forEach((element) => {
-      // element.timeLeft = Date.parse(element.timeTo) - Date.now();
+    user.todoCards.forEach((element) => {
       let timeTo = Date.parse(element.timeToTodo);
-      element.timeDays = Math.floor(
+      element.timeDaysTodo = Math.floor(
         (timeTo - Date.now()) / 1000 / 60 / 60 / 24
       );
       element.timeHours = Math.floor((timeTo - Date.now()) / 1000 / 60 / 60);
@@ -34,7 +30,7 @@ router.get("/previewTodos", async (req, res) => {
     });
 
     await res.render("previewTodos", {
-      todos: manyTodo,
+      todos: user.todoCards,
     });
   } else {
     res.send("<h1>you didn't login</h1>");

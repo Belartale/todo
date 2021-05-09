@@ -15,10 +15,10 @@ async function getIdUser(params) {
   const todo = await todos.findOne({ _id: ObjectId(params) });
 
   if (typeof todo == "object" && todo != null) {
-    console.log(chalk.green("todo._id"));
+    // console.log(chalk.green("GET todo._id"));
     return todo._id;
   } else {
-    console.log(chalk.red("todo._id  NULLLLLLLLLLL"));
+    console.log(chalk.red("NOT todo._id  NULLLLLLLLLLL"));
   }
 }
 

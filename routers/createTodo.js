@@ -32,6 +32,7 @@ router.post("/createTodo", async (req, res) => {
   let arr = [...todo.todoCards];
 
   arr.push({
+    idTodo: Date.now(),
     titleTodo: req.body.titleTodo,
     textTodo: req.body.textTodo,
     colorTodo: req.body.colorTodo,
