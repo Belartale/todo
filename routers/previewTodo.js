@@ -30,7 +30,7 @@ router.get("/previewTodos", async (req, res) => {
     });
 
     await res.render("previewTodos", {
-      todos: user.todoCards,
+      todoCards: user.todoCards,
     });
   } else {
     res.send("<h1>you didn't login</h1>");

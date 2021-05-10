@@ -4,10 +4,11 @@ html
     include ./navbar.pug
     main.container.my-5
       section
-        h1.text-center CREATE YOUR TODO:
-        .row.justify-content-center
+        h1.text-center.mb-5 CREATE YOUR TODO:
 
-          form(action="/createTodo", method="post").card.col-3.aniTest
+        div.d-flex.justify-content-center
+
+          form(action="/createTodo", method="post").card.col-4.aniTest
 
             .card-header 
               label(for="inputTitle").card-title.d-flex.justify-content-center.fs-3 Title:
@@ -23,9 +24,12 @@ html
                 input.form-control.form-control-color.me-5(type='color' name="colorTodo" value='#ffffff' title='Choose your color of todo')
                 input(type="datetime-local" name="timeToTodo" placeholder="Your time of todo" title="Your time to complete todo").form-control 
 
-              .d-flex.justify-content-end 
-                button(class="btn btn-outline-primary" type="submit") Create todo
-                  svg.bi.bi-file-earmark-plus.mx-1(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
+              .d-flex.justify-content-center
+                button(class="btn btn-outline-warning rounded-circle p-2" type="submit")
+                  svg.bi.bi-plus-lg(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewBox='0 0 16 16')
+                    path(d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z')
+
+                  //- svg.bi.bi-file-earmark-plus.mx-1(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
                     path(d='M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z')
                     path(d='M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z')
 

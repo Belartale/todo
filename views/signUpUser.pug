@@ -3,20 +3,22 @@ html
   body.background-linear-gradient
     include ./navbar.pug
     main.container.my-5
-      section
-        .col-6
-          h1 РЕГИСТ
-        .col-6 
-          form(action="/signUpUser", method="post") 
-            .mb-3
-              label.form-label(for='labelUserName') Your username
-              input#labelUserName.form-control(type='text' name="userName")
-            .mb-3
-              label.form-label(for='labelUserPassword') Password
-              input#labelUserPassword.form-control(type='password' name="userPassword")
-            //- .mb-3.form-check
-              input#exampleCheck1.form-check-input(type='checkbox')
-              label.form-check-label(for='exampleCheck1') Check me out
+      section.d-flex.justify-content-center
+        form(action="/signUpUser", method="post").card.col-4
+          .card-header
+            h1 РЕГИСТ
+          .card-body
+            
+              .mb-3
+                label.form-label(for='labelUserName') Your username
+                input#labelUserName.form-control(type='text' name="userName")
+              .mb-3
+                label.form-label(for='labelUserPassword') Password
+                input#labelUserPassword.form-control(type='password' name="userPassword")
+              //- .mb-3.form-check
+                input#exampleCheck1.form-check-input(type='checkbox')
+                label.form-check-label(for='exampleCheck1') Check me out
+          .card-body
             button.btn.btn-primary(type='submit') Submit
 
 

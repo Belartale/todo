@@ -32,7 +32,7 @@ router.post("/createTodo", async (req, res) => {
   let arr = [...todo.todoCards];
 
   arr.push({
-    idTodo: Date.now(),
+    idTodo: JSON.stringify(Date.now()),
     titleTodo: req.body.titleTodo,
     textTodo: req.body.textTodo,
     colorTodo: req.body.colorTodo,
@@ -48,14 +48,6 @@ router.post("/createTodo", async (req, res) => {
       },
     }
   );
-
-  // await todos.todoCards.insertOne({
-  //   titleTodo: req.body.titleTodo,
-  //   textTodo: req.body.textTodo,
-  //   colorTodo: req.body.colorTodo,
-  //   timeFromTodo: Date.now(),
-  //   timeToTodo: req.body.timeToTodo,
-  // });
 
   await res.redirect("/previewTodos");
 });
