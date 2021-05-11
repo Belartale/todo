@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const chalk = require("chalk");
 
 const client = new MongoClient(
@@ -12,21 +12,41 @@ router.post("/changeTodo", async (req, res) => {
   try {
     await client.connect();
     const todos = client.db().collection("todos");
+    const user = await todos.findOne({ _id: ObjectId(req.cookies._id) });
+
+    let toJSON = JSON.stringify(user.todoCards);
+
+    let findOneTodo = JSON.parse(toJSON).findIndex((elem) => {
+      if (elem.idTodo == req.body.idTodo) {
+        return elem;
+      }
+    });
+
+    console.log(chalk.yellow(findOneTodo));
+
+    function updateItemArray(arr, index, obj) {
+      return [].concat(
+        arr.slice(0, index),
+        { ...arr[index], ...obj },
+        arr.slice(index + 1)
+      );
+      // return (arr.todoCards[index] = { ...obj });
+    }
 
     await todos.updateOne(
-      { title: req.body.title, text: req.body.text, color: req.body.color },
+      { _id: ObjectId(req.cookies._id) },
       {
         $set: {
-          title: req.body.changeTitle,
-          text: req.body.changeText,
-          color: req.body.changeColor,
+          todoCards: updateItemArray(user.todoCards, findOneTodo, {
+            titleTodo: req.body.changeTitle,
+            textTodo: req.body.changeText,
+            colorTodo: req.body.changeColor,
+          }),
         },
       }
     );
 
-    const todo = await todos.find().toArray();
-
-    await res.render("previewTodos", { arr: todo });
+    await res.redirect("/previewTodos");
   } catch (error) {
     console.log(chalk.red(error));
   }

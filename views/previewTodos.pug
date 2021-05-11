@@ -6,8 +6,8 @@ html
       section
         ul.list-unstyled.row
           each todo, index in todoCards
-            li(class="col-4 mb-5" data-aos="fade-up")
-              .card.shadow(style=`max-width: 20rem; background: ${todo.colorTodo}`)
+            li(class="col-4 mb-5")
+              .card.shadow(style=`max-width: 20rem; background: ${todo.colorTodo}` data-aos="zoom-in")
                 .card-header
                   .row.align-items-center
                     .col-6
@@ -16,39 +16,10 @@ html
                       //- span time #{todo.time}
                     .col-6.d-flex.justify-content-end
                     
-                      button.btn.btn-outline-success.me-3(type='button' data-bs-toggle='modal' data-bs-target=`#modal${todo.id}`)
+                      button.btn.btn-outline-success.me-3(type='button' data-bs-toggle='modal' data-bs-target=`#modal${todo.idTodo}`)
                         svg.bi.bi-elementow-clockwise(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewbox='0 0 16 16')
                           path(fill-rule='evenodd' d='M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z')
                           path(d='M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z')
-                      .modal.fade(id=`modal${todo.id}` tabindex='-1' aria-labelledby=`modalLabel${todo.id}` aria-hidden='true')
-                        .modal-dialog
-                          form(action="/changeTodo", method="post").modal-content
-                            .modal-header
-                              h5(id=`modalLabel${todo.id}`).modal-title.text-success Window changes
-                              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                            .modal-body
-
-                              //- HIDDEN  
-                              input(type="text", name="id", value=todo.id, hidden)
-                              input(type="text", name="title", value=todo.titleTodo, hidden)
-                              input(type="text", name="text", value=todo.textTodo, hidden)
-                              input(type="text", name="color", value=todo.colorTodo, hidden)
-                              input(type="text", name="timeFrom", value=todo.timeFromTodo, hidden)
-                              input(type="text", name="timeTo", value=todo.timeToTodo, hidden)
-
-                              //- CHANGE
-                              label(class="form-label" for="changeTitle") changeTitle
-                              input(class="form-control" id="changeTitle" type="text", name="changeTitle", value=todo.titleTodo).d-block.mb-4
-                              
-                              label(class="form-label" for="changeText") changeText
-                              input(class="form-control" id="changeText" type="text", name="changeText", value=todo.textTodo).d-block.mb-4
-                              
-                              label(class="form-label" for="changeColor") changeColor
-                              input.form-control.form-control-color(type='color' name="changeColor" value=`${todo.colorTodo}` id="changeColor")
-                            
-                            .modal-footer
-                              button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                              button.btn.btn-success(type='submit') Save changes
 
                       form(action="/deleteTodo", method="post" style="margin-bottom: 0px;" )
                         input(type="text", name="idTodo", value=todo.idTodo, hidden).position-absolute
@@ -72,4 +43,31 @@ html
                       - if (todo.timeMinutes > 0 && todo.timeMinutes < 60)
                         p.card-text.text-muted.text-end= todo.timeMinutes
                           |  Minutes
+
+              .modal.fade(id=`modal${todo.idTodo}` tabindex='-1' aria-labelledby=`modalLabel${todo.idTodo}` aria-hidden='true')
+                .modal-dialog
+                  form(action="/changeTodo", method="post").modal-content
+                    .modal-header
+                      h5(id=`modalLabel${todo.idTodo}`).modal-title.text-success Window changes
+                      button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                    .modal-body
+
+                      //- HIDDEN  
+                      input(type="text", name="idTodo", value=todo.idTodo, hidden)
+
+                      //- CHANGE
+                      label(class="form-label" for=`changeTitle${todo.idTodo}`) changeTitle
+                      input(class="form-control" id=`changeTitle${todo.idTodo}` type="text", name="changeTitle", value=todo.titleTodo).d-block.mb-4
+                      
+                      label(class="form-label" for=`changeText${todo.idTodo}`) changeText
+                      input(class="form-control" id=`changeText${todo.idTodo}` type="text", name="changeText", value=todo.textTodo).d-block.mb-4
+                      
+                      label(class="form-label" for=`changeColor${todo.idTodo}`) changeColor
+                      input.form-control.form-control-color(type='color' name="changeColor" value=`${todo.colorTodo}` id=`changeColor${todo.idTodo}`)
+                    
+                    .modal-footer
+                      button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                      button.btn.btn-success(type='submit') Save changes
+
+
     include ./endBody.pug
