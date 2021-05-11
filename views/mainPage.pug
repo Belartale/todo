@@ -66,19 +66,18 @@ html
 
 
           .col.d-flex.justify-content-center
-            form(action="/signInUser", method="post").col-6
-              .bm-3
-                h1.text-center SIGN UP
-              .mb-3
-                label.form-label(for='labelUserName') Your username
-                input#labelUserName.form-control(type='text' name="userName")
-              .mb-3
-                label.form-label(for='labelUserPassword') Password
-                input#labelUserPassword.form-control(type='password' name="userPassword")
-              //- .mb-3.form-check
-                input#exampleCheck1.form-check-input(type='checkbox')
-                label.form-check-label(for='exampleCheck1') Check me out
-              button.btn.btn-primary(type='submit') Submit
+            .col-6
+              form(action="/signInUser", method="post").card
+                .card-header
+                  h1.text-center SIGN UP
+                .card-body
+                  label.form-label(for='labelUserName') Your username
+                  input#labelUserName.form-control(type='text' name="userName").mb-3
+                
+                  label.form-label(for='labelUserPassword') Password
+                  input#labelUserPassword.form-control(type='password' name="userPassword")
+                .card-footer
+                  button.btn.btn-primary(type='submit') Submit
 
 
 
