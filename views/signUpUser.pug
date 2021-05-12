@@ -20,6 +20,17 @@ html
                 label.form-check-label(for='exampleCheck1') Check me out
           .card-footer
             button.btn.btn-primary(type='submit') Submit
+      #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog
+          .modal-content
+            .modal-header
+              h5#exampleModalLabel.modal-title Modal title
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body
+              | ...
+            .modal-footer
+              button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+              button.btn.btn-primary(type='button') Save changes
 
 
 

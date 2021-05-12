@@ -43,3 +43,11 @@ buttonDeleteCookies.addEventListener(
   },
   false
 );
+
+import "bootstrap";
+
+let myModal = new bootstrap.Modal(document.getElementById("myModal"), {
+  keyboard: false,
+});
+
+myModal.show();

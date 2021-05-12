@@ -37,22 +37,4 @@ router.post("/signUpUser", async (req, res) => {
   }
 });
 
-// router.post("/signUpUser", async (req, res) => {
-//   await client.connect();
-//   const todos = client.db().collection("todos");
-
-//   await todos.insertOne({
-//     userName: req.body.userName,
-//     userPassword: req.body.userPassword,
-//     todoCards: [],
-//   });
-
-//   const todo = await todos.findOne({
-//     userName: req.body.userName,
-//     userPassword: req.body.userPassword,
-//   });
-//   await res.cookie("_id", todo._id, {});
-//   await res.redirect("/");
-// });
-
 module.exports = router;
