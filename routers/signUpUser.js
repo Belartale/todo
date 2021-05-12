@@ -17,18 +17,42 @@ router.post("/signUpUser", async (req, res) => {
   await client.connect();
   const todos = client.db().collection("todos");
 
-  await todos.insertOne({
-    userName: req.body.userName,
-    userPassword: req.body.userPassword,
-    todoCards: [],
-  });
+  const findUserName = await todos.findOne({ userName: req.body.userName });
 
-  const todo = await todos.findOne({
-    userName: req.body.userName,
-    userPassword: req.body.userPassword,
-  });
-  await res.cookie("_id", todo._id, {});
-  await res.redirect("/");
+  if (req.body.userName != findUserName.userName) {
+    await todos.insertOne({
+      userName: req.body.userName,
+      userPassword: req.body.userPassword,
+      todoCards: [],
+    });
+
+    const todo = await todos.findOne({
+      userName: req.body.userName,
+      userPassword: req.body.userPassword,
+    });
+    await res.cookie("_id", todo._id, {});
+    await res.redirect("/");
+  } else {
+    await res.send("Such a user already exists !!!");
+  }
 });
+
+// router.post("/signUpUser", async (req, res) => {
+//   await client.connect();
+//   const todos = client.db().collection("todos");
+
+//   await todos.insertOne({
+//     userName: req.body.userName,
+//     userPassword: req.body.userPassword,
+//     todoCards: [],
+//   });
+
+//   const todo = await todos.findOne({
+//     userName: req.body.userName,
+//     userPassword: req.body.userPassword,
+//   });
+//   await res.cookie("_id", todo._id, {});
+//   await res.redirect("/");
+// });
 
 module.exports = router;

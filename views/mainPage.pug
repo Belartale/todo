@@ -5,10 +5,10 @@ html
     main.container.my-5
       section
         .row
-          .col
+          .col-12.col-lg-6
             h1 MAIN PAGE
             p Todo helps you organize your tasks and projects and power through your to-do list like a champion. From grocery shopping to completing work projects on time. #[b Todo puts you in the driver’s seat.]
-            svg(height='480pt' viewBox='0 -48 480 480' width='480pt' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink')
+            svg(class="img-main-page" viewBox='0 -48 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink')
               lineargradient#a
                 stop(offset='0' stop-color='#e93e3a')
                 stop(offset='.36' stop-color='#ed683c')
@@ -65,11 +65,11 @@ html
 
 
 
-          .col.d-flex.justify-content-center
-            .col-6
+          .col-12.col-lg-6.d-flex.justify-content-center
+            .col-6.col-lg-8.col-xl-6
               form(action="/signInUser", method="post").card
                 .card-header
-                  h1.text-center SIGN UP
+                  h1.text-center SIGN IN
                 .card-body
                   label.form-label(for='labelUserName') Your username
                   input#labelUserName.form-control(type='text' name="userName").mb-3

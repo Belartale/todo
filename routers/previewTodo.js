@@ -25,15 +25,17 @@ router.get("/previewTodos", async (req, res) => {
       element.timeDaysTodo = Math.floor(
         (timeTo - Date.now()) / 1000 / 60 / 60 / 24
       );
-      element.timeHours = Math.floor((timeTo - Date.now()) / 1000 / 60 / 60);
-      element.timeMinutes = Math.floor((timeTo - Date.now()) / 1000 / 60);
+      element.timeHoursTodo = Math.floor(
+        (timeTo - Date.now()) / 1000 / 60 / 60
+      );
+      element.timeMinutesTodo = Math.floor((timeTo - Date.now()) / 1000 / 60);
     });
 
     await res.render("previewTodos", {
       todoCards: user.todoCards,
     });
   } else {
-    res.send("<h1>you didn't login</h1>");
+    res.render("notActiveUser", { namePage: "preview todo" });
   }
 });
 

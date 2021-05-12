@@ -19,7 +19,7 @@ router.get("/createTodo", async (req, res) => {
   ) {
     res.render("createTodo", {});
   } else {
-    res.send("<h1>you didn't login</h1>");
+    res.render("notActiveUser", { namePage: "create your todo" });
   }
 });
 

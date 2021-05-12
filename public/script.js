@@ -34,3 +34,12 @@ function deleteAllCookies() {
   }
 }
 // deleteAllCookies();
+
+buttonDeleteCookies.addEventListener(
+  "click",
+  async () => {
+    await deleteAllCookies();
+    await window.location.reload();
+  },
+  false
+);

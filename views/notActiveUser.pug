@@ -1,0 +1,10 @@
+html
+  include ./head.pug
+  body.background-linear-gradient
+    include ./navbar.pug
+    main.container.my-5
+      section.text-center 
+        h1 Access is closed on the #{namePage}. 
+        p You didn't sign in your profile. Please #[a(href="/").text-reset sign in] your profile.
+
+    include ./endBody.pug

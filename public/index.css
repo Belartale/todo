@@ -8,3 +8,22 @@
 .mt-100 {
   margin: 1000px;
 }
+
+.img-main-page {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+/* @media (max-width: 992px) {
+  .img-main-page {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .img-main-page {
+    width: 20px;
+    height: 20px;
+  }
+} */
