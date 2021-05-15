@@ -4,7 +4,7 @@ html
     include ./navbar.pug
     main.container.my-5
       section.text-center 
-        h1 Access is closed on the #{namePage}. 
+        h1 Access is closed on the #[span.text-info #{namePage}]. 
         p You didn't sign in your profile. Please #[a(href="/").text-reset sign in] your profile.
 
     include ./endBody.pug
