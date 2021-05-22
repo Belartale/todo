@@ -14,7 +14,6 @@ html
                     .col-6
                       h5.card-title= todo.titleTodo
 
-                      //- span time #{todo.time}
                     .col-6.d-flex.justify-content-end
                     
                       button.btn.btn-outline-success.me-3(type='button' data-bs-toggle='modal' data-bs-target=`#modal${todo.idTodo}`)
@@ -45,15 +44,6 @@ html
                       - else if (todo.timeMinutesTodo > 0 && todo.timeMinutesTodo < 60)
                         p.card-text.text-muted.text-end= todo.timeMinutesTodo
                           |  Minutes
-                      //- - if (todo.timeDaysTodo > 0)
-                      //-   p.card-text.text-muted.text-end= todo.timeDaysTodo
-                      //-     |  Days
-                      //- - if (todo.timeHoursTodo > 0 && todo.timeHoursTodo < 23)
-                      //-   p.card-text.text-muted.text-end= todo.timeHoursTodo
-                      //-     |  Hours
-                      //- - if (todo.timeMinutesTodo > 0 && todo.timeMinutesTodo < 60)
-                      //-   p.card-text.text-muted.text-end= todo.timeMinutesTodo
-                      //-     |  Minutes
 
             .modal.fade(id=`modal${todo.idTodo}` tabindex='-1' aria-labelledby=`modalLabel${todo.idTodo}` aria-hidden='true')
               .modal-dialog

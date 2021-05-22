@@ -27,7 +27,6 @@ router.post("/deleteTodo", async (req, res) => {
 
     await res.redirect("/previewTodos");
   } catch (error) {
-    console.log(req.cookies._id);
     console.log(chalk.red(error));
   }
 });

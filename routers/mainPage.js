@@ -14,7 +14,6 @@ async function getIdUser(params) {
   if (typeof todo == "object" && todo != null) {
     return todo._id;
   } else {
-    console.log(chalk.red("NOT todo._id  NULLLLLLLLLLL"));
   }
 }
 
@@ -23,10 +22,8 @@ router.get("/", async (req, res) => {
     (await getIdUser(req.cookies._id).then((e) => e)) == req.cookies._id &&
     req.cookies._id != null
   ) {
-    console.log(chalk.green("to createTodo"));
     res.render("createTodo", {});
   } else {
-    console.log(chalk.red("req.cookies NULLLLLLLLLL"));
   }
 
   res.render("mainPage", {});

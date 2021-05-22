@@ -12,15 +12,17 @@ router.post("/signInUser", async (req, res) => {
     userName: req.body.userName,
     userPassword: req.body.userPassword,
   });
+
   if (
-    req.body.userName == todo.userName ||
+    todo != null &&
+    req.body.userName == todo.userName &&
     req.body.userPassword == todo.userPassword
   ) {
     await res.cookie("_id", todo._id, {});
     await res.cookie("authUser", true, {});
     await res.render("createTodo", {});
   } else {
-    res.render("notActiveUser", { namePage: "000000000" });
+    res.render("notActiveUser", { namePage: "create todo" });
   }
 });
 

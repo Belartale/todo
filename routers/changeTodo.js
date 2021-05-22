@@ -19,8 +19,6 @@ router.post("/changeTodo", async (req, res) => {
       }
     });
 
-    console.log(chalk.yellow(findOneTodo));
-
     function updateItemArray(arr, index, obj) {
       return [].concat(
         arr.slice(0, index),
