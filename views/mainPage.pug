@@ -63,8 +63,6 @@ html
               path(d='m400 232h48v16h-48zm0 0' fill='url(#x)')
               path(d='m400 264h48v16h-48zm0 0' fill='url(#y)')
 
-
-
           .col-12.col-lg-6.d-flex.justify-content-center
             .col-6.col-lg-8.col-xl-6
               form(action="/signInUser", method="post").card
@@ -72,15 +70,11 @@ html
                   h1.text-center SIGN IN
                 .card-body
                   label.form-label(for='labelUserName') Your username
-                  input#labelUserName.form-control(type='text' name="userName").mb-3
+                  input#labelUserName.form-control(type='text' name="userName" value="user1").mb-3
                 
                   label.form-label(for='labelUserPassword') Password
-                  input#labelUserPassword.form-control(type='password' name="userPassword")
+                  input#labelUserPassword.form-control(type='password' name="userPassword" value="1")
                 .card-footer
                   button.btn.btn-primary(type='submit') Submit
-
-
-
-
 
     include ./endBody.pug

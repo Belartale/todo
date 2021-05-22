@@ -1,15 +1,12 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient, ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb");
 const chalk = require("chalk");
 const path = require("path");
 
 const mainPage = require("./mainPage");
 
-const client = new MongoClient(
-  "mongodb+srv://admin-app-todo1:admin-app-todo1@cluster0.7h1fx.mongodb.net/app-todo?retryWrites=true&w=majority",
-  { useUnifiedTopology: true }
-);
+const connectDb = require("./connectDb");
 
 router.get("/createTodo", async (req, res) => {
   if (
@@ -24,8 +21,8 @@ router.get("/createTodo", async (req, res) => {
 });
 
 router.post("/createTodo", async (req, res) => {
-  await client.connect();
-  const todos = client.db().collection("todos");
+  await connectDb.client.connect();
+  const todos = connectDb.client.db().collection("todos");
 
   let todo = await todos.findOne({ _id: ObjectId(req.cookies._id) });
 

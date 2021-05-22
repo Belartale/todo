@@ -1,21 +1,17 @@
 const { Router } = require("express");
 const router = Router();
-const { MongoClient, ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb");
 const chalk = require("chalk");
 const path = require("path");
 
-const client = new MongoClient(
-  "mongodb+srv://admin-app-todo1:admin-app-todo1@cluster0.7h1fx.mongodb.net/app-todo?retryWrites=true&w=majority",
-  { useUnifiedTopology: true }
-);
+const connectDb = require("./connectDb");
 
 async function getIdUser(params) {
-  await client.connect();
-  const todos = client.db().collection("todos");
+  await connectDb.client.connect();
+  const todos = connectDb.client.db().collection("todos");
   const todo = await todos.findOne({ _id: ObjectId(params) });
 
   if (typeof todo == "object" && todo != null) {
-    // console.log(chalk.green("GET todo._id"));
     return todo._id;
   } else {
     console.log(chalk.red("NOT todo._id  NULLLLLLLLLLL"));
@@ -35,8 +31,6 @@ router.get("/", async (req, res) => {
 
   res.render("mainPage", {});
 });
-
-// module.exports = router;
 
 module.exports = {
   router: router,
