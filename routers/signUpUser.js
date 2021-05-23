@@ -36,14 +36,16 @@ router.post("/signUpUser", async (req, res) => {
 
       await res.redirect("/");
     } else {
-      await res.send("Such a user already exists !!!");
+      // await res.send("Such a user already exists !!!!!!!!!!!!!!!!!!!!!!!!");
+      await res.render("userTaken", {});
     }
   } else if (findUserName == null) {
     await addUser({ todos: todos, req: req.body });
 
     await res.redirect("/");
   } else {
-    await res.send("Something went wrong");
+    // await res.send("Something went wrong");
+    await res.render("userTaken", {});
   }
 });
 

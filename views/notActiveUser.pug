@@ -1,10 +1,7 @@
-html
-  include ./head.pug
-  body.background-linear-gradient
-    include ./navbar.pug
-    main.container.my-5
-      section.text-center 
-        h1 Access is closed on the #[span.text-info #{namePage}]. 
-        p You didn't sign in your profile. Please #[a(href="/").text-reset sign in] your profile.
+extends template.pug
 
-    include ./endBody.pug
+block content
+  main.container.my-5
+    section.text-center 
+      h1 Access is closed on the #[span.text-info #{namePage}]. 
+      p You didn't sign in your profile. Please #[a(href="/").text-reset sign in] your profile.

@@ -1,80 +1,78 @@
-html
-  include ./head.pug
-  body.background-linear-gradient
-    include ./navbar.pug
-    main.container.my-5
-      section
-        .row
-          .col-12.col-lg-6
-            h1 MAIN PAGE
-            p Todo helps you organize your tasks and projects and power through your to-do list like a champion. From grocery shopping to completing work projects on time. #[b Todo puts you in the driver’s seat.]
-            svg(class="img-main-page" viewBox='0 -48 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink')
-              lineargradient#a
-                stop(offset='0' stop-color='#e93e3a')
-                stop(offset='.36' stop-color='#ed683c')
-                stop(offset='.716' stop-color='#f3903f')
-                stop(offset='1' stop-color='#fdc70c')
-              lineargradient#b(gradientUnits='userSpaceOnUse' x1='242.232' x2='237.76' xlink:href='#a' y1='390.68' y2='-7.656')
-              lineargradient#c(gradientUnits='userSpaceOnUse' x1='242.504' x2='238.024' xlink:href='#a' y1='390.68' y2='-7.664')
-              lineargradient#d(gradientUnits='userSpaceOnUse' x1='163.768' x2='159.296' xlink:href='#a' y1='391.56' y2='-6.776')
-              lineargradient#e(gradientUnits='userSpaceOnUse' x1='227.76' x2='223.288' xlink:href='#a' y1='390.848' y2='-7.496')
-              lineargradient#f(gradientUnits='userSpaceOnUse' x1='187.408' x2='182.936' xlink:href='#a' y1='391.296' y2='-7.04')
-              lineargradient#g(gradientUnits='userSpaceOnUse' x1='153.616' x2='149.136' xlink:href='#a' y1='391.68' y2='-6.664')
-              lineargradient#h(gradientUnits='userSpaceOnUse' x1='257.6' x2='253.128' xlink:href='#a' y1='390.512' y2='-7.832')
-              lineargradient#i(gradientUnits='userSpaceOnUse' x1='241.24' x2='236.768' xlink:href='#a' y1='390.696' y2='-7.648')
-              lineargradient#j(gradientUnits='userSpaceOnUse' x1='184.888' x2='180.416' xlink:href='#a' y1='391.328' y2='-7.016')
-              lineargradient#k(gradientUnits='userSpaceOnUse' x1='272.88' x2='268.408' xlink:href='#a' y1='390.336' y2='-8')
-              lineargradient#l(gradientUnits='userSpaceOnUse' x1='328.872' x2='324.4' xlink:href='#a' y1='389.712' y2='-8.632')
-              lineargradient#m(gradientUnits='userSpaceOnUse' x1='43.336' x2='38.864' xlink:href='#a' y1='392.92' y2='-5.424')
-              lineargradient#n(gradientUnits='userSpaceOnUse' x1='75.336' x2='70.856' xlink:href='#a' y1='392.56' y2='-5.784')
-              lineargradient#o(gradientUnits='userSpaceOnUse' x1='58.976' x2='54.496' xlink:href='#a' y1='392.744' y2='-5.6')
-              lineargradient#p(gradientUnits='userSpaceOnUse' x1='58.432' x2='53.96' xlink:href='#a' y1='392.744' y2='-5.592')
-              lineargradient#q(gradientUnits='userSpaceOnUse' x1='50.08' x2='45.6' xlink:href='#a' y1='392.84' y2='-5.496')
-              lineargradient#r(gradientUnits='userSpaceOnUse' x1='57.72' x2='53.24' xlink:href='#a' y1='392.752' y2='-5.584')
-              lineargradient#s(gradientUnits='userSpaceOnUse' x1='57.36' x2='52.88' xlink:href='#a' y1='392.76' y2='-5.584')
-              lineargradient#t(gradientUnits='userSpaceOnUse' x1='411.288' x2='406.816' xlink:href='#a' y1='388.784' y2='-9.56')
-              lineargradient#u(gradientUnits='userSpaceOnUse' x1='426.928' x2='422.456' xlink:href='#a' y1='388.608' y2='-9.736')
-              lineargradient#v(gradientUnits='userSpaceOnUse' x1='426.392' x2='421.912' xlink:href='#a' y1='388.616' y2='-9.728')
-              lineargradient#w(gradientUnits='userSpaceOnUse' x1='418.032' x2='413.552' xlink:href='#a' y1='388.704' y2='-9.632')
-              lineargradient#x(gradientUnits='userSpaceOnUse' x1='425.672' x2='421.192' xlink:href='#a' y1='388.624' y2='-9.72')
-              lineargradient#y(gradientUnits='userSpaceOnUse' x1='425.312' x2='420.832' xlink:href='#a' y1='388.624' y2='-9.712')
-              path(d='m456 40h-72v-16c0-13.253906-10.746094-24-24-24h-240c-13.253906 0-24 10.746094-24 24v16h-72c-13.253906 0-24 10.746094-24 24v256c0 13.253906 10.746094 24 24 24h72v16c0 13.253906 10.746094 24 24 24h240c13.253906 0 24-10.746094 24-24v-16h72c13.253906 0 24-10.746094 24-24v-256c0-13.253906-10.746094-24-24-24zm-128-24v36.6875l-2.34375-2.34375c-3.125-3.121094-8.1875-3.121094-11.3125 0l-2.34375 2.34375v-36.6875zm-304 312c-4.417969 0-8-3.582031-8-8v-256c0-4.417969 3.582031-8 8-8h72v272zm344 32c0 4.417969-3.582031 8-8 8h-240c-4.417969 0-8-3.582031-8-8v-336c0-4.417969 3.582031-8 8-8h176v56c0 3.234375 1.949219 6.152344 4.9375 7.390625s6.429688.550781 8.71875-1.734375l10.34375-10.34375 10.34375 10.34375c1.5 1.5 3.535156 2.34375 5.65625 2.34375 1.050781.003906 2.09375-.203125 3.0625-.609375 2.988281-1.238281 4.9375-4.15625 4.9375-7.390625v-56h16c4.417969 0 8 3.582031 8 8zm96-40c0 4.417969-3.582031 8-8 8h-72v-272h72c4.417969 0 8 3.582031 8 8zm0 0' fill='url(#b)')
-              path(d='m328 128h-176c-4.417969 0-8 3.582031-8 8v64c0 4.417969 3.582031 8 8 8h176c4.417969 0 8-3.582031 8-8v-64c0-4.417969-3.582031-8-8-8zm-8 64h-160v-48h160zm0 0' fill='url(#c)')
-              path(d='m144 48h32v16h-32zm0 0' fill='url(#d)')
-              path(d='m192 48h64v16h-64zm0 0' fill='url(#e)')
-              path(d='m144 80h80v16h-80zm0 0' fill='url(#f)')
-              path(d='m144 240h16v16h-16zm0 0' fill='url(#g)')
-              path(d='m176 240h160v16h-160zm0 0' fill='url(#h)')
-              path(d='m144 272h192v16h-192zm0 0' fill='url(#i)')
-              path(d='m144 304h80v16h-80zm0 0' fill='url(#j)')
-              path(d='m240 304h64v16h-64zm0 0' fill='url(#k)')
-              path(d='m320 304h16v16h-16zm0 0' fill='url(#l)')
-              path(d='m32 88h16v16h-16zm0 0' fill='url(#m)')
-              path(d='m64 88h16v16h-16zm0 0' fill='url(#n)')
-              path(d='m32 120h48v16h-48zm0 0' fill='url(#o)')
-              path(d='m32 168h48v16h-48zm0 0' fill='url(#p)')
-              path(d='m32 200h32v16h-32zm0 0' fill='url(#q)')
-              path(d='m32 232h48v16h-48zm0 0' fill='url(#r)')
-              path(d='m32 264h48v16h-48zm0 0' fill='url(#s)')
-              path(d='m400 88h16v16h-16zm0 0' fill='url(#t)')
-              path(d='m400 120h48v16h-48zm0 0' fill='url(#u)')
-              path(d='m400 168h48v16h-48zm0 0' fill='url(#v)')
-              path(d='m400 200h32v16h-32zm0 0' fill='url(#w)')
-              path(d='m400 232h48v16h-48zm0 0' fill='url(#x)')
-              path(d='m400 264h48v16h-48zm0 0' fill='url(#y)')
+extends template.pug
 
-          .col-12.col-lg-6.d-flex.justify-content-center
-            .col-6.col-lg-8.col-xl-6
-              form(action="/signInUser", method="post").card
-                .card-header
-                  h1.text-center SIGN IN
-                .card-body
-                  label.form-label(for='labelUserName') Your username
-                  input#labelUserName.form-control(type='text' name="userName" value="user1").mb-3
-                
-                  label.form-label(for='labelUserPassword') Password
-                  input#labelUserPassword.form-control(type='password' name="userPassword" value="1")
-                .card-footer
-                  button.btn.btn-primary(type='submit') Submit
+block content 
+  main.container.my-5
+    section
+      .row
+        .col-12.col-lg-6
+          h1 MAIN PAGE
+          p Todo helps you organize your tasks and projects and power through your to-do list like a champion. From grocery shopping to completing work projects on time. #[b Todo puts you in the driver’s seat.]
+          svg(class="img-main-page" viewBox='0 -48 480 480' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink')
+            lineargradient#a
+              stop(offset='0' stop-color='#e93e3a')
+              stop(offset='.36' stop-color='#ed683c')
+              stop(offset='.716' stop-color='#f3903f')
+              stop(offset='1' stop-color='#fdc70c')
+            lineargradient#b(gradientUnits='userSpaceOnUse' x1='242.232' x2='237.76' xlink:href='#a' y1='390.68' y2='-7.656')
+            lineargradient#c(gradientUnits='userSpaceOnUse' x1='242.504' x2='238.024' xlink:href='#a' y1='390.68' y2='-7.664')
+            lineargradient#d(gradientUnits='userSpaceOnUse' x1='163.768' x2='159.296' xlink:href='#a' y1='391.56' y2='-6.776')
+            lineargradient#e(gradientUnits='userSpaceOnUse' x1='227.76' x2='223.288' xlink:href='#a' y1='390.848' y2='-7.496')
+            lineargradient#f(gradientUnits='userSpaceOnUse' x1='187.408' x2='182.936' xlink:href='#a' y1='391.296' y2='-7.04')
+            lineargradient#g(gradientUnits='userSpaceOnUse' x1='153.616' x2='149.136' xlink:href='#a' y1='391.68' y2='-6.664')
+            lineargradient#h(gradientUnits='userSpaceOnUse' x1='257.6' x2='253.128' xlink:href='#a' y1='390.512' y2='-7.832')
+            lineargradient#i(gradientUnits='userSpaceOnUse' x1='241.24' x2='236.768' xlink:href='#a' y1='390.696' y2='-7.648')
+            lineargradient#j(gradientUnits='userSpaceOnUse' x1='184.888' x2='180.416' xlink:href='#a' y1='391.328' y2='-7.016')
+            lineargradient#k(gradientUnits='userSpaceOnUse' x1='272.88' x2='268.408' xlink:href='#a' y1='390.336' y2='-8')
+            lineargradient#l(gradientUnits='userSpaceOnUse' x1='328.872' x2='324.4' xlink:href='#a' y1='389.712' y2='-8.632')
+            lineargradient#m(gradientUnits='userSpaceOnUse' x1='43.336' x2='38.864' xlink:href='#a' y1='392.92' y2='-5.424')
+            lineargradient#n(gradientUnits='userSpaceOnUse' x1='75.336' x2='70.856' xlink:href='#a' y1='392.56' y2='-5.784')
+            lineargradient#o(gradientUnits='userSpaceOnUse' x1='58.976' x2='54.496' xlink:href='#a' y1='392.744' y2='-5.6')
+            lineargradient#p(gradientUnits='userSpaceOnUse' x1='58.432' x2='53.96' xlink:href='#a' y1='392.744' y2='-5.592')
+            lineargradient#q(gradientUnits='userSpaceOnUse' x1='50.08' x2='45.6' xlink:href='#a' y1='392.84' y2='-5.496')
+            lineargradient#r(gradientUnits='userSpaceOnUse' x1='57.72' x2='53.24' xlink:href='#a' y1='392.752' y2='-5.584')
+            lineargradient#s(gradientUnits='userSpaceOnUse' x1='57.36' x2='52.88' xlink:href='#a' y1='392.76' y2='-5.584')
+            lineargradient#t(gradientUnits='userSpaceOnUse' x1='411.288' x2='406.816' xlink:href='#a' y1='388.784' y2='-9.56')
+            lineargradient#u(gradientUnits='userSpaceOnUse' x1='426.928' x2='422.456' xlink:href='#a' y1='388.608' y2='-9.736')
+            lineargradient#v(gradientUnits='userSpaceOnUse' x1='426.392' x2='421.912' xlink:href='#a' y1='388.616' y2='-9.728')
+            lineargradient#w(gradientUnits='userSpaceOnUse' x1='418.032' x2='413.552' xlink:href='#a' y1='388.704' y2='-9.632')
+            lineargradient#x(gradientUnits='userSpaceOnUse' x1='425.672' x2='421.192' xlink:href='#a' y1='388.624' y2='-9.72')
+            lineargradient#y(gradientUnits='userSpaceOnUse' x1='425.312' x2='420.832' xlink:href='#a' y1='388.624' y2='-9.712')
+            path(d='m456 40h-72v-16c0-13.253906-10.746094-24-24-24h-240c-13.253906 0-24 10.746094-24 24v16h-72c-13.253906 0-24 10.746094-24 24v256c0 13.253906 10.746094 24 24 24h72v16c0 13.253906 10.746094 24 24 24h240c13.253906 0 24-10.746094 24-24v-16h72c13.253906 0 24-10.746094 24-24v-256c0-13.253906-10.746094-24-24-24zm-128-24v36.6875l-2.34375-2.34375c-3.125-3.121094-8.1875-3.121094-11.3125 0l-2.34375 2.34375v-36.6875zm-304 312c-4.417969 0-8-3.582031-8-8v-256c0-4.417969 3.582031-8 8-8h72v272zm344 32c0 4.417969-3.582031 8-8 8h-240c-4.417969 0-8-3.582031-8-8v-336c0-4.417969 3.582031-8 8-8h176v56c0 3.234375 1.949219 6.152344 4.9375 7.390625s6.429688.550781 8.71875-1.734375l10.34375-10.34375 10.34375 10.34375c1.5 1.5 3.535156 2.34375 5.65625 2.34375 1.050781.003906 2.09375-.203125 3.0625-.609375 2.988281-1.238281 4.9375-4.15625 4.9375-7.390625v-56h16c4.417969 0 8 3.582031 8 8zm96-40c0 4.417969-3.582031 8-8 8h-72v-272h72c4.417969 0 8 3.582031 8 8zm0 0' fill='url(#b)')
+            path(d='m328 128h-176c-4.417969 0-8 3.582031-8 8v64c0 4.417969 3.582031 8 8 8h176c4.417969 0 8-3.582031 8-8v-64c0-4.417969-3.582031-8-8-8zm-8 64h-160v-48h160zm0 0' fill='url(#c)')
+            path(d='m144 48h32v16h-32zm0 0' fill='url(#d)')
+            path(d='m192 48h64v16h-64zm0 0' fill='url(#e)')
+            path(d='m144 80h80v16h-80zm0 0' fill='url(#f)')
+            path(d='m144 240h16v16h-16zm0 0' fill='url(#g)')
+            path(d='m176 240h160v16h-160zm0 0' fill='url(#h)')
+            path(d='m144 272h192v16h-192zm0 0' fill='url(#i)')
+            path(d='m144 304h80v16h-80zm0 0' fill='url(#j)')
+            path(d='m240 304h64v16h-64zm0 0' fill='url(#k)')
+            path(d='m320 304h16v16h-16zm0 0' fill='url(#l)')
+            path(d='m32 88h16v16h-16zm0 0' fill='url(#m)')
+            path(d='m64 88h16v16h-16zm0 0' fill='url(#n)')
+            path(d='m32 120h48v16h-48zm0 0' fill='url(#o)')
+            path(d='m32 168h48v16h-48zm0 0' fill='url(#p)')
+            path(d='m32 200h32v16h-32zm0 0' fill='url(#q)')
+            path(d='m32 232h48v16h-48zm0 0' fill='url(#r)')
+            path(d='m32 264h48v16h-48zm0 0' fill='url(#s)')
+            path(d='m400 88h16v16h-16zm0 0' fill='url(#t)')
+            path(d='m400 120h48v16h-48zm0 0' fill='url(#u)')
+            path(d='m400 168h48v16h-48zm0 0' fill='url(#v)')
+            path(d='m400 200h32v16h-32zm0 0' fill='url(#w)')
+            path(d='m400 232h48v16h-48zm0 0' fill='url(#x)')
+            path(d='m400 264h48v16h-48zm0 0' fill='url(#y)')
 
-    include ./endBody.pug
+        .col-12.col-lg-6.d-flex.align-items-center.flex-column
+          .col-6.col-lg-8.col-xl-6
+            form(action="/signInUser", method="post").card
+              .card-header
+                h1.text-center SIGN IN
+              .card-body
+                label.form-label(for='labelUserName') Your username
+                input#labelUserName.form-control(type='text' name="userName" value="user1").mb-3
+              
+                label.form-label(for='labelUserPassword') Password
+                input#labelUserPassword.form-control(type='password' name="userPassword" value="1")
+              .card-footer
+                button.btn.btn-primary(type='submit') Submit
+          p.d-block Or you can #[a(href="/signUpUser") Sing Up]
