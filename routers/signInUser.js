@@ -20,7 +20,7 @@ router.post("/signInUser", async (req, res) => {
   ) {
     await res.cookie("_id", todo._id, {});
     await res.cookie("authUser", true, {});
-    await res.render("createTodo", { userName: todo.userName });
+    await res.render("createTodo", {});
   } else {
     res.render("notActiveUser", { namePage: "create todo" });
   }

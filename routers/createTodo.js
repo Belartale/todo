@@ -9,12 +9,21 @@ const mainPage = require("./mainPage");
 const connectDb = require("./connectDb");
 
 router.get("/createTodo", async (req, res) => {
+  await connectDb.client.connect();
+  const todos = connectDb.client.db().collection("todos");
+
+  let todo = await todos.findOne({ _id: ObjectId(req.cookies._id) });
+
   if (
     (await mainPage.getIdUser(req.cookies._id).then((e) => e)) ==
       req.cookies._id &&
     req.cookies._id != null
   ) {
-    res.render("createTodo", {});
+    await connectDb.client.connect();
+    const todos = connectDb.client.db().collection("todos");
+
+    let todo = await todos.findOne({ _id: ObjectId(req.cookies._id) });
+    res.render("createTodo", { userName: todo.userName });
   } else {
     res.render("notActiveUser", { namePage: "create your todo" });
   }
