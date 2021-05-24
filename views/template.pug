@@ -1,5 +1,5 @@
 doctype html
-html(lang="en")
+html(lang="en")#background-linear-gradient
   head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -12,7 +12,7 @@ html(lang="en")
     link(rel="stylesheet", href="/index.css")
     block head
   
-  body.background-linear-gradient
+  body
     nav.navbar.navbar-expand-lg.navbar-light.bg-warning
       .container-fluid
         a.navbar-brand(href='/') Todo
@@ -26,6 +26,7 @@ html(lang="en")
             li.d-none.nav-item#itemNavbarCreateTodo
               a.nav-link(href='/createTodo') Create todo
           div#iconUser.me-3
+          p= userName
           a.btn.text-decoration-none.text-dark#itemNavbarSignUpUser(href='/signUpUser' type="button") Sign Up
           button.d-none.btn#buttonExitProfile(type='button')
             svg.bi.bi-door-open(xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='currentColor' viewBox='0 0 16 16')
