@@ -1,13 +1,9 @@
 # [todo](https://belartale-todo.herokuapp.com/)
 
-make delete todo (deleteTodo.js > 31 row)
+This project about completing daily tasks, you can buy groceries in the store or complete a goal.
 
-https://www.flaticon.com/packs/documents-18
-https://www.flaticon.com/packs/stationery-and-office-14
+**Main technologies: Pug, CSS, Express.js, Cookie-parser, MongoDB.**
 
-button
-https://www.flaticon.com/packs/miscellaneous-51
-https://www.flaticon.com/packs/essential-8
-
-todo:
-signInUser 22
+I used icons from:
+* https://www.flaticon.com/packs/miscellaneous-51
+* https://www.flaticon.com/packs/essential-8
