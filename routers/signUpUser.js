@@ -28,6 +28,7 @@ router.post("/signUpUser", async (req, res) => {
     });
     await res.cookie("_id", todo._id, {});
     await res.cookie("authUser", true, {});
+    await res.cookie("userName", todo.userName, {});
   }
 
   if (findUserName != null) {
